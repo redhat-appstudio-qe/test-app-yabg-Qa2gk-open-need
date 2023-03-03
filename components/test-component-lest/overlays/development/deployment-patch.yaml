@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: test-component-lest
+  namespace: build-e2e-thvk-tenant
+spec:
+  replicas: 1
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images@sha256:2d4f27ecbfead252a4e5aa16a8e5d8e8e1972145a6817b616cbcb11cb1f6b5f5
+        name: my-python
+        resources: {}
+status: {}
