@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-component-lest
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-component-lest
+    app.kubernetes.io/part-of: test-app-yabg
+  name: test-component-lest
+  namespace: build-e2e-thvk-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+      app.kubernetes.io/instance: test-component-lest
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: python-app
+        app.kubernetes.io/instance: test-component-lest
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images:5d4166b5cf19407094b37784eb25e8bd
+        name: my-python
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
